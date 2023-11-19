@@ -1,0 +1,5 @@
+resources:
+- nginx-stream-configmap.yaml
+- nginx-stream-svc.yaml
+- nginx-stream-is.yaml
+- nginx-stream-deployment.yaml

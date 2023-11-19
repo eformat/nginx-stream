@@ -1,0 +1,26 @@
+---
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  annotations:
+    openshift.io/generated-by: OpenShiftNewApp
+  creationTimestamp: null
+  labels:
+    app: nginx-stream
+    app.kubernetes.io/component: nginx-stream
+    app.kubernetes.io/instance: nginx-stream
+  name: nginx-stream
+spec:
+  lookupPolicy:
+    local: false
+  tags:
+  - annotations:
+      openshift.io/imported-from: quay.io/eformat/nginx-stream:latest
+    from:
+      kind: DockerImage
+      name: quay.io/eformat/nginx-stream:latest
+    importPolicy:
+      importMode: Legacy
+    name: latest
+    referencePolicy:
+      type: Source

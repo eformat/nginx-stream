@@ -1,0 +1,39 @@
+---
+apiVersion: v1
+data:
+  nginx.conf: |-
+    # For more information on configuration, see:
+    #   * Official English Documentation: http://nginx.org/en/docs/
+    # https://docs.nginx.com/nginx/admin-guide/load-balancer/tcp-udp-load-balancer/
+
+    worker_processes auto;
+    error_log /dev/stdout info; #debug
+    pid /run/nginx.pid;
+
+    # Load dynamic modules. See /usr/share/doc/nginx/README.dynamic.
+    include /usr/share/nginx/modules/*.conf;
+
+    events {
+        worker_connections 1024;
+    }
+
+    stream {
+
+        server {
+            listen     50000;
+            #TCP traffic will be forwarded to the specified server
+            proxy_pass welcome1:8080;
+        }
+
+        server {
+            listen     50001;
+            #TCP traffic will be forwarded to the specified server
+            proxy_pass welcome2:8080;
+        }
+
+        # ...
+    }
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: nginx-config

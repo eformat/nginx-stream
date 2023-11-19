@@ -22,15 +22,15 @@ podman run --name welcome2 -d --rm -p 8081:8080 quay.io/eformat/welcome:latest
 Run nginx-stream proxy.
 
 ```bash
-podman run --name nginx-stream -d --rm -p 10000:10000 -p 10001:10001 quay.io/eformat/nginx-stream:latest
+podman run --name nginx-stream -d --rm -p 50000:50000 -p 50001:50001 quay.io/eformat/nginx-stream:latest
 ```
 
 Curl via the tcp proxy.
 
 ```bash
-virt:~$ curl localhost:10000
+virt:~$ curl localhost:50000
 Hello World ! Welcome to OpenShift from 27b1b4cb4a8a:
 
-virt:~$ curl localhost:10001
+virt:~$ curl localhost:50001
 Hello World ! Welcome to OpenShift from 3f46a3774e04:
 ```
